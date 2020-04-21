@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 const TwoByTwo = () => {
   const onClickTwoByTwo = () => {
@@ -68,6 +68,21 @@ const TwoByTwo = () => {
     }, 1000); 
   }
 
+  const onClick2_8 = () => {
+    const subject = new Subject();
+
+    subject.subscribe((i) => {
+      console.log('Observable 1', i);
+    });
+
+    subject.subscribe((i) => {
+      console.log('Observable 2', i);
+    });
+
+    subject.next(1);
+    subject.next(2);
+  }
+
   return (
     <>
     <button onClick={onClickTwoByTwo}>
@@ -75,6 +90,9 @@ const TwoByTwo = () => {
     </button>
     <button onClick={onClickTwoByThree}>
       2-3
+    </button>
+    <button onClick={onClick2_8}>
+      2-8
     </button>
     </>
   );
