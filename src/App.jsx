@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Two from './components/Two';
+import { Input } from './RxJSTest/input';
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
     <h1>
       RXJS TEST React Project
     </h1>
-    <Two />
+    <Input />
     </>
   )
 };
