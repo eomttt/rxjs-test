@@ -4,6 +4,8 @@ import { fromEvent } from 'rxjs';
 import { map, debounceTime, filter, mergeMap, distinctUntilChanged } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
+import * as styles from './search.css';
+
 export const Search = () => {
   const [items, setItems] = useState([]);
 
@@ -25,7 +27,7 @@ export const Search = () => {
 
   return (
     <>
-      <input id="search" type="text" placeholder="RxJS Search test"/>
+      <input className={styles.input} id="search" type="text" placeholder="RxJS Search test"/>
       <div>
         {
           items.map((item) => {
