@@ -5,3 +5,18 @@
 >**$ yarn install**
 
 >**Open dist/index.html**
+
+## Search
+- rxjs NameSpace
+   - fromEvent
+   - merge
+- rxjs ajax NameSpace
+   - ajax.getJSON
+- rxjs operators NameSpace
+   - map
+   - mergeAll
+   - merge
+   - mergeMap (flatMap)
+   - debounceTime, throttleTime
+   - filter
+   - distinctUntilChanged
