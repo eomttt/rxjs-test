@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Input } from './RxJSTest/input';
+import { Search } from './RxJSTest/search';
 
 const App = () => {
   return (
@@ -8,7 +8,7 @@ const App = () => {
     <h1>
       RXJS TEST React Project
     </h1>
-    <Input />
+    <Search />
     </>
   )
 };
