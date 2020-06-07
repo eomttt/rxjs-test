@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import { fromEvent } from 'rxjs';
-import { map, debounceTime, filter, mergeMap, distinctUntilChanged } from 'rxjs/operators';
+import { map, debounceTime, filter, mergeMap, distinctUntilChanged, tap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 import * as styles from './search.css';
 
 export const Search = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([{login: '검색어를 입력하세요.'}]);
 
   useEffect(() => {
     const keyup$ = fromEvent(document.getElementById('search'), 'keyup')
@@ -15,14 +15,24 @@ export const Search = () => {
         debounceTime(300),
         map(event => event.target.value),
         distinctUntilChanged(), // 특수문자가 나오지 않기 위해 중복 데이터 처리
-        filter(query => query.trim().length > 0),
-        mergeMap(query => ajax.getJSON(`https://api.github.com/search/users?q=${query}`))
       )
     
-      keyup$.subscribe(value => {
-        console.log('Searched value', value.items);
-        setItems(value.items)
-      })
+    const user$ = keyup$
+        .pipe(
+          filter(query => query.trim().length > 0),
+          tap(_value => setItems([{login: '로딩 중...'}])),
+          mergeMap(query => ajax.getJSON(`https://api.github.com/search/users?q=${query}`)),
+          tap(value => setItems(value.items))
+        )
+    
+    const reset$ = keyup$
+          .pipe(
+            filter(query => query.trim().length === 0),
+            tap(_value => setItems([{login: '검색어를 입력하세요.'}]))
+          )
+    
+      user$.subscribe();
+      reset$.subscribe();
   }, []);
 
   return (
