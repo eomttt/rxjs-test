@@ -6,7 +6,7 @@
 
 >**Open dist/index.html**
 
-## Search
+## Chapt5
 - rxjs NameSpace
    - fromEvent
    - merge
@@ -20,3 +20,13 @@
    - debounceTime, throttleTime
    - filter
    - distinctUntilChanged
+
+## Chapt6
+- rxjs operators NameSpace
+   - tap
+   - partition
+   - switchAll
+   - switchMap
+   - catchError
+   - retry
+   - finalize

@@ -6,7 +6,7 @@ import { ajax } from 'rxjs/ajax';
 
 import * as styles from './search.css';
 
-export const Search = () => {
+export const Search5 = () => {
   const [items, setItems] = useState([{login: '검색어를 입력하세요.'}]);
 
   useEffect(() => {
