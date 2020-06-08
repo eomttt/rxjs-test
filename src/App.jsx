@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Search5 } from './Chapt5/search';
 import { Search6 } from './Chapt6/search';
+import { Test7 } from './Chapt7/test';
 
 const App = () => {
   return (
@@ -16,6 +17,10 @@ const App = () => {
       <div>
         <h2>Chapt 6</h2>
         <Search6 />
+      </div>
+      <div>
+        <h2>Chapt 7</h2>
+        <Test7 />
       </div>
     </div>
   )
