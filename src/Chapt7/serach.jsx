@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subject } from 'rxjs';
 import {
   map, debounceTime,
   distinctUntilChanged,
   tap, partition, switchMap,
+  publish, refCount, share,
+  multicast,
 } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
@@ -12,37 +14,44 @@ export const Search7 = () => {
   const [items, setItems] = useState([{login: '검색어를 입력하세요.'}]);
 
   useEffect(() => {
-    const keyup$ = fromEvent(document.getElementById('search6'), 'keyup')
+    const keyup$ = fromEvent(document.getElementById('search7'), 'keyup')
       .pipe(
         debounceTime(300),
         map(event => event.target.value),
-        distinctUntilChanged(), // 특수문자가 나오지 않기 위해 중복 데이터 처리
+        distinctUntilChanged(),
+        tap(value => console.log('from keyup$', value)),
+        // publish() 만 사용 하였을 때에 const keyupConnector = keyup$.connect() 한 후 keyupConnector.unsubscribe() 가 필요한데 refCount 를 사용하면 필요 없음
+        // publish(), // multicast(new Subject()) 와 동일
+        // refCount(),
+        share(), // publish, refCount 두개 같이 사용한거와 같은 효과
+        // subject를 사용하는 대신 connectableObservable 사용함
       )
-    
+
     let [user$, reset$] = keyup$.pipe(
       partition(query => query.trim().length > 0)
     )
     
     user$ = user$.pipe(
       tap(_value => setItems([{login: '로딩 중...'}])),
-      // mergeMap 은 기존에것 유지, switchMap 은 덮어씌우기
-      // 네트워크 환경이 느려 먼저 보낸 요청에 답이 나중에 보낸 요청에 답보다 늦게 오는걸 방지하기 위함
-      // 먼저 보낸 요청을 취소함
       switchMap(query => ajax.getJSON(`https://api.github.com/search/users?q=${query}`)),
-      tap(value => setItems(value.items))
+      tap(value => setItems(value.items)),
+      tap(value => console.log('from user$', value))
     );
 
     reset$ = reset$.pipe(
-      tap(_value => setItems([{login: '검색어를 입력하세요.'}]))
+      tap(_value => setItems([{login: '검색어를 입력하세요.'}])),
+      tap(value => console.log('from reset$', value))
     )
-    
-      user$.subscribe();
-      reset$.subscribe();
+
+
+    user$.subscribe();
+    reset$.subscribe();
+    // keyup$.connect(); // publish 만 쓸 경우 필요, refCount 를 사용하면서 불필요
   }, []);
 
   return (
     <>
-      <input id="search6" type="text" placeholder="RxJS Search test"/>
+      <input id="search7" type="text" placeholder="RxJS Search test"/>
       <div>
         {
           items.map((item) => {

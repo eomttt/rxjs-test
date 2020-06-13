@@ -30,3 +30,10 @@
    - catchError
    - retry
    - finalize
+
+## Chapt7
+- rxjs operators NameSpace
+   - multicast
+   - publish
+   - refCount
+   - share
