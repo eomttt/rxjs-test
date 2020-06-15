@@ -9,12 +9,12 @@
 ## Chapt5
 - rxjs NameSpace
    - fromEvent
-   - merge
+   - merge (여러 개의 Observable들을 합쳐서 하나의 Ob servable로 만드는 오퍼레이터)
 - rxjs ajax NameSpace
    - ajax.getJSON
 - rxjs operators NameSpace
    - map
-   - mergeAll
+   - mergeAll (Observable 안에 있는 여러 개의 Observable을 꺼내서 하나의 Observable로 만든다.)
    - merge
    - mergeMap (flatMap)
    - debounceTime, throttleTime
