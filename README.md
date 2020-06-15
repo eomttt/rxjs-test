@@ -37,3 +37,10 @@
    - publish
    - refCount
    - share
+
+## Chapt8
+- rxjs operators NameSpace
+   - takeUntil
+   - take, first
+   - startWith
+   - withLatestFrom
