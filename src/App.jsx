@@ -6,6 +6,7 @@ import { Test7 } from './Chapt7/test';
 import { Search7  } from './Chapt7/serach';
 
 import { Carousel8 } from './Chapt8/carousel';
+import { Carousel9 } from './Chapt9/carousel';
 
 const App = () => {
   return (
@@ -29,6 +30,10 @@ const App = () => {
       <div>
         <h2>Chapt 8</h2>
         <Carousel8 />
+      </div>
+      <div>
+        <h2>Chapt 9</h2>
+        <Carousel9 />
       </div>
     </div>
   )

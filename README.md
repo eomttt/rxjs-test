@@ -47,3 +47,8 @@
    - take, first
    - startWith
    - withLatestFrom
+
+## Chpat9
+- rxjs operators NameSpace
+   - scan
+   - reduce
