@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { fromEvent, merge } from 'rxjs';
-import { switchMap, takeUntil, tap, map, first, startWith, withLatestFrom, share, scan } from 'rxjs/operators';
+import { switchMap, takeUntil, map, first, startWith, withLatestFrom, share, scan } from 'rxjs/operators';
 
 import * as styles from '../Chapt8/styles.css';
 
 const PANEL_COUNT = 4;
 const THRESHOLD = 30;
-const DEFAULT_DURATION = 300;
 
 export const Carousel9 = () => {
   const [containerStyle, setContainerStyle] = useState({});
