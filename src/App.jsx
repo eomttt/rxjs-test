@@ -8,6 +8,7 @@ import { Search7  } from './Chapt7/serach';
 import { Carousel8 } from './Chapt8/carousel';
 import { Carousel9 } from './Chapt9/carousel';
 import { Scheduler10 } from './Chapt10/scheduler';
+import { Carousel10 } from './Chapt10/carousel';
 
 const App = () => {
   return (
@@ -39,6 +40,7 @@ const App = () => {
       <div>
         <h2>Chapt 10</h2>
         <Scheduler10 />
+        <Carousel10 />
       </div>
     </div>
   )

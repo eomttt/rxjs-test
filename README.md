@@ -48,7 +48,16 @@
    - startWith
    - withLatestFrom
 
-## Chpat9
+## Chapt9
 - rxjs operators NameSpace
    - scan
    - reduce
+
+## Chapt10
+- rxjs operators NameSpace
+    - subsribeOn
+    - observeOn (비동기 처리를 위한 로직)
+    - takeWhile
+- rxjs NameSpace
+    - concat
+    - defer

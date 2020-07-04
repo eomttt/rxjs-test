@@ -1,3 +1,8 @@
+/**
+ * subscribeOn은 구독 처리를 어떻게 할 것인가? 에 대한 오퍼레이터이기 때문에 오퍼레이터의 위치에 상관없이 한 번 설정할 수 있다.
+ * 반면 observeOn은 데이터 전달을 어떻게 할 것인가?에 대한 오퍼레이터이기 때문에 오퍼레이터의 위치에 영향을 미친다.
+ */
+
 import React, { useEffect } from 'react';
 
 import { animationFrameScheduler, interval, concat, of, defer } from 'rxjs';
